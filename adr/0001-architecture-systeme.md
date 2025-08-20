@@ -12,7 +12,7 @@ L'application est une interface frontend pour l'API OpenAI, similaire à ChatGPT
 
 ## Décision
 
-L'architecture système sera basée sur une application web monopage (SPA) utilisant un framework JavaScript moderne (par exemple, React, Vue ou Angular) pour le frontend. Un backend (Node.js/Express) servira de proxy pour l'API OpenAI et gérera également l'authentification des utilisateurs, les sessions de chat et la persistance des données dans une base de données SQLite.
+L'architecture système sera basée sur une application web monopage (SPA) utilisant un framework JavaScript moderne (par exemple, React, Vue ou Angular) pour le frontend. Un serveur unifié (Node.js/Express) servira à la fois le frontend, agira comme proxy pour l'API OpenAI, et gérera l'authentification des utilisateurs, les sessions de chat et la persistance des données dans une base de données SQLite.
 
 ## Conséquences
 

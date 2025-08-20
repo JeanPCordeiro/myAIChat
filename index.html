@@ -7,16 +7,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h1>Chat avec OpenAI</h1>
+    <div class="auth-container" id="auth-container">
+        <h2>Authentification</h2>
+        <input type="text" id="auth-username" placeholder="Nom d'utilisateur">
+        <input type="password" id="auth-password" placeholder="Mot de passe">
+        <button id="register-button">S'inscrire</button>
+        <button id="login-button">Se connecter</button>
+        <p id="auth-message"></p>
+    </div>
+
+    <div class="main-container" id="main-container" style="display: none;">
+        <div class="sidebar">
+            <h2>Sessions de Chat</h2>
+            <button id="new-session-button">Nouvelle Session</button>
+            <ul id="session-list">
+                <!-- Les sessions seront ajoutées ici par JavaScript -->
+            </ul>
         </div>
-        <div class="chat-messages" id="chat-messages">
-            <!-- Les messages seront ajoutés ici par JavaScript -->
-        </div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Tapez votre message...">
-            <button id="send-button">Envoyer</button>
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>Chat avec OpenAI</h1>
+                <span id="current-username"></span>
+            </div>
+            <div class="chat-messages" id="chat-messages">
+                <!-- Les messages seront ajoutés ici par JavaScript -->
+            </div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Tapez votre message...">
+                <button id="send-button">Envoyer</button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

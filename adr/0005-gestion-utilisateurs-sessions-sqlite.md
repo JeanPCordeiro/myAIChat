@@ -12,7 +12,7 @@ Suite à l'implémentation d'un proxy côté serveur pour la gestion CORS et la 
 
 ## Décision
 
-Nous allons implémenter un module backend dédié à la gestion des utilisateurs et des sessions de chat. Ce module sera responsable de :
+Nous allons intégrer la gestion des utilisateurs et des sessions de chat directement dans le serveur unifié. Ce serveur sera responsable de :
 - L'authentification et l'autorisation des utilisateurs.
 - L'association des clés API OpenAI à des utilisateurs spécifiques.
 - La création, la lecture, la mise à jour et la suppression des sessions de chat.
