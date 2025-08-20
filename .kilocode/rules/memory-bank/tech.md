@@ -1,7 +1,7 @@
 # Tech
 
 ## Technologies used
-(À définir après l'analyse du code source)
+Voir [ADR 0003: Technologies Utilisées](adr/0003-technologies-utilisees.md)
 
 ## Development setup
 (À définir après l'analyse du code source)
