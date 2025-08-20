@@ -9,9 +9,9 @@ Implémentation initiale de l'application frontend OpenAI (HTML, CSS, JS).
 - Mise à jour de `architecture.md` et `tech.md` pour référencer les ADRs.
 - Ajout du répertoire `features/` dans la banque de mémoire.
 - Implémentation de la gestion de la clé API OpenAI via une saisie utilisateur au démarrage.
+- Résolution du problème CORS en implémentant un proxy côté serveur (Node.js/Express) et en modifiant `script.js` pour utiliser ce proxy.
 
 ## Next steps
-- Tester l'application frontend.
 - Affiner le choix du framework JavaScript si nécessaire.
 - Documenter les dépendances et l'environnement de développement.
 - Mettre à jour la banque de mémoire pour refléter les changements significatifs.

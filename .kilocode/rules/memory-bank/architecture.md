@@ -8,6 +8,7 @@ Voir [ADR 0001: Architecture Système](adr/0001-architecture-systeme.md)
 
 ## Décisions Techniques Clés
 Voir [ADR 0002: Décisions Techniques Clés](adr/0002-decisions-techniques-cles.md)
+Voir [ADR 0004: Utilisation d'un proxy côté serveur pour la gestion CORS avec l'API OpenAI](adr/0004-proxy-cors-openai.md)
 
 ## Design patterns in use
 (À définir après l'analyse du code source)

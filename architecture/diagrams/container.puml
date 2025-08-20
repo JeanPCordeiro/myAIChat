@@ -6,14 +6,16 @@ title Diagramme de Conteneur pour l'Application Frontend OpenAI
 Person(user, "Utilisateur", "Utilisateur de l'application")
 
 System_Boundary(c1, "Application Frontend OpenAI") {
-    Container(spa, "Application Web", "JavaScript, React", "Fournit l'interface utilisateur et gère les interactions avec l'API OpenAI.")
+    Container(spa, "Application Web", "JavaScript, HTML, CSS", "Fournit l'interface utilisateur.")
     Container(web_browser, "Navigateur Web", "Chrome, Firefox, Edge, etc.", "Exécute l'application web monopage.")
+    Container(proxy, "Proxy API OpenAI", "Node.js, Express", "Relaye les requêtes du frontend vers l'API OpenAI et gère les problèmes CORS.")
 }
 
 System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
 
 Rel(user, web_browser, "Utilise")
 Rel(web_browser, spa, "Héberge")
-Rel(spa, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(spa, proxy, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(proxy, openai_api, "Relaye les requêtes à", "HTTPS/JSON")
 
 @enduml
