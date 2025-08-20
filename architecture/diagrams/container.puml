@@ -8,14 +8,16 @@ Person(user, "Utilisateur", "Utilisateur de l'application")
 System_Boundary(c1, "Application Frontend OpenAI") {
     Container(spa, "Application Web", "JavaScript, HTML, CSS", "Fournit l'interface utilisateur.")
     Container(web_browser, "Navigateur Web", "Chrome, Firefox, Edge, etc.", "Exécute l'application web monopage.")
-    Container(proxy, "Proxy API OpenAI", "Node.js, Express", "Relaye les requêtes du frontend vers l'API OpenAI et gère les problèmes CORS.")
+    Container(backend_service, "Service Backend", "Node.js, Express", "Gère l'authentification, les sessions, la persistance des données et relaye les requêtes vers l'API OpenAI.")
 }
 
 System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+System_Ext(sqlite_db, "Base de Données SQLite", "Stocke les utilisateurs, sessions et historiques de chat")
 
 Rel(user, web_browser, "Utilise")
 Rel(web_browser, spa, "Héberge")
-Rel(spa, proxy, "Envoie des requêtes à", "HTTPS/JSON")
-Rel(proxy, openai_api, "Relaye les requêtes à", "HTTPS/JSON")
+Rel(spa, backend_service, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(backend_service, openai_api, "Relaye les requêtes à", "HTTPS/JSON")
+Rel(backend_service, sqlite_db, "Lit et écrit dans", "JDBC/ODBC")
 
 @enduml

@@ -6,11 +6,15 @@ title Diagramme de Contexte pour l'Application Frontend OpenAI
 System_Boundary(c0, "Application Frontend OpenAI") {
     Person(user, "Utilisateur", "Utilisateur de l'application")
     System(frontend_app, "Application Frontend OpenAI", "Application web monopage (SPA) pour interagir avec l'API OpenAI")
+    System(backend_service, "Service Backend", "Gère l'authentification, les sessions et la persistance des données")
 }
 
 System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+System_Ext(sqlite_db, "Base de Données SQLite", "Stocke les utilisateurs, sessions et historiques de chat")
 
 Rel(user, frontend_app, "Utilise")
-Rel(frontend_app, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(frontend_app, backend_service, "Communique avec", "HTTPS/JSON")
+Rel(backend_service, openai_api, "Relaye les requêtes à", "HTTPS/JSON")
+Rel(backend_service, sqlite_db, "Lit et écrit dans", "JDBC/ODBC")
 
 @enduml

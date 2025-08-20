@@ -64,3 +64,55 @@ Fonctionnalité: Interaction avec l'IA via l'interface de chat
       Quand j'envoie une requête à l'IA
       Alors un message d'erreur indique que la clé API est invalide
       Et la requête n'est pas envoyée
+
+ Fonctionnalité: Gestion des utilisateurs et des sessions de chat
+
+   En tant qu'utilisateur de l'application
+   Je veux pouvoir gérer mon compte utilisateur et mes sessions de chat
+   Afin de personnaliser mon expérience et de conserver mon historique
+
+   Scénario: Inscription d'un nouvel utilisateur
+     Étant donné que je suis sur la page d'inscription
+     Quand je saisis un nom d'utilisateur "nouvel_utilisateur" et un mot de passe "motdepasse123"
+     Et que je clique sur le bouton "S'inscrire"
+     Alors un nouveau compte utilisateur est créé
+     Et je suis automatiquement connecté
+
+   Scénario: Connexion d'un utilisateur existant
+     Étant donné que je suis sur la page de connexion
+     Et qu'un utilisateur "utilisateur_existant" avec le mot de passe "motdepasseABC" existe
+     Quand je saisis "utilisateur_existant" et "motdepasseABC"
+     Et que je clique sur le bouton "Se connecter"
+     Alors je suis connecté à mon compte
+     Et mes sessions de chat précédentes sont chargées
+
+   Scénario: Déconnexion de l'utilisateur
+     Étant donné que je suis connecté
+     Quand je clique sur le bouton "Se déconnecter"
+     Alors je suis déconnecté de mon compte
+     Et mes informations de session sont effacées
+
+   Scénario: Création d'une nouvelle session de chat
+     Étant donné que je suis connecté
+     Quand je clique sur le bouton "Nouvelle session"
+     Alors une nouvelle session de chat est initiée
+     Et l'historique de la conversation est vide
+
+   Scénario: Chargement d'une session de chat existante
+     Étant donné que je suis connecté
+     Et que j'ai plusieurs sessions de chat enregistrées
+     Quand je sélectionne une session de chat spécifique dans la liste
+     Alors l'historique de cette session est chargé et affiché
+
+   Scénario: Persistance de l'historique des échanges
+     Étant donné que je suis connecté et dans une session de chat
+     Quand j'envoie un message à l'IA
+     Et que je reçois une réponse de l'IA
+     Alors l'échange (ma requête et la réponse de l'IA) est enregistré dans l'historique de la session
+     Et cet historique est persisté dans la base de données
+
+   Scénario: Suppression d'une session de chat
+     Étant donné que je suis connecté
+     Et que j'ai une session de chat existante
+     Quand je clique sur le bouton "Supprimer la session" pour cette session
+     Alors la session de chat et son historique sont supprimés de la base de données

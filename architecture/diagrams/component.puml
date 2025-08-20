@@ -3,23 +3,44 @@
 
 title Diagramme de Composant pour l'Application Web (SPA)
 
-Container(spa, "Application Web", "JavaScript, React", "Fournit l'interface utilisateur et gère les interactions avec l'API OpenAI.")
+Container(spa, "Application Web", "JavaScript, React", "Fournit l'interface utilisateur et gère les interactions avec le Service Backend.")
 
 System_Boundary(c2, "Application Web (SPA)") {
     Component(ui, "Interface Utilisateur", "React Components", "Gère l'affichage des éléments de l'interface.")
-    Component(api_request_handler, "Gestionnaire de Requêtes API", "JavaScript Module", "Envoie les requêtes à l'API OpenAI et gère les réponses.")
-    Component(state_manager, "Gestionnaire d'État", "Redux/Context API", "Gère l'état global de l'application (messages, historique, etc.).")
+    Component(auth_module, "Module d'Authentification", "JavaScript Module", "Gère l'inscription, la connexion et la déconnexion des utilisateurs.")
+    Component(chat_session_manager, "Gestionnaire de Sessions de Chat", "JavaScript Module", "Gère la création, le chargement et la suppression des sessions de chat.")
+    Component(api_request_handler, "Gestionnaire de Requêtes API", "JavaScript Module", "Envoie les requêtes au Service Backend et gère les réponses.")
+    Component(state_manager, "Gestionnaire d'État", "Redux/Context API", "Gère l'état global de l'application (utilisateur, sessions, messages, historique, etc.).")
     Component(message_display, "Afficheur de Messages", "React Component", "Affiche les messages de l'utilisateur et les réponses de l'IA.")
     Component(input_field, "Champ de Saisie", "React Component", "Permet à l'utilisateur de saisir des requêtes.")
 }
 
+System_Boundary(c3, "Service Backend") {
+    Component(auth_service, "Service d'Authentification", "Node.js, Express", "Gère l'inscription, la connexion et la déconnexion des utilisateurs.")
+    Component(session_service, "Service de Sessions", "Node.js, Express", "Gère la création, le chargement, la suppression et la persistance des sessions de chat.")
+    Component(openai_proxy, "Proxy OpenAI", "Node.js, Express", "Relaye les requêtes vers l'API OpenAI.")
+    Component(database_access, "Accès Base de Données", "Node.js, SQLite", "Gère les opérations CRUD sur la base de données SQLite.")
+}
+
 System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+System_Ext(sqlite_db, "Base de Données SQLite", "Stocke les utilisateurs, sessions et historiques de chat")
 
 Rel(ui, input_field, "Contient")
 Rel(ui, message_display, "Contient")
+Rel(ui, auth_module, "Utilise")
+Rel(ui, chat_session_manager, "Utilise")
+
 Rel(input_field, state_manager, "Met à jour l'état avec les requêtes")
 Rel(state_manager, api_request_handler, "Déclenche l'envoi de requêtes")
-Rel(api_request_handler, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(api_request_handler, backend_service, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(backend_service, openai_proxy, "Relaye les requêtes à", "HTTPS/JSON")
+Rel(openai_proxy, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(backend_service, auth_service, "Utilise")
+Rel(backend_service, session_service, "Utilise")
+Rel(auth_service, database_access, "Accède à")
+Rel(session_service, database_access, "Accède à")
+Rel(database_access, sqlite_db, "Interagit avec")
+
 Rel(api_request_handler, state_manager, "Met à jour l'état avec les réponses")
 Rel(state_manager, message_display, "Fournit les messages à afficher")
 
