@@ -1,1 +1,1 @@
-image: ubuntu:latestworkspace-node
+image: gitpod/workspace-node
