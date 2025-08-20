@@ -7,6 +7,7 @@ Mise à jour de la banque de mémoire avec les décisions d'architecture et tech
 - Création du répertoire `adr` à la racine du projet.
 - Création des ADRs `0001-architecture-systeme.md`, `0002-decisions-techniques-cles.md`, et `0003-technologies-utilisees.md`.
 - Mise à jour de `architecture.md` et `tech.md` pour référencer les ADRs.
+- Ajout du répertoire `features/` dans la banque de mémoire.
 
 ## Next steps
 - Vérifier la cohérence et l'exhaustivité des ADRs et des fichiers de la banque de mémoire.
