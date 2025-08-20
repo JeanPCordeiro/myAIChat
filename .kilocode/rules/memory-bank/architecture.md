@@ -17,3 +17,9 @@ Voir [ADR 0002: Décisions Techniques Clés](adr/0002-decisions-techniques-cles.
 
 ## Critical implementation paths
 (À définir après l'analyse du code source)
+
+## Diagrammes d'Architecture C4 Model
+Les diagrammes d'architecture sont générés en PlantUML et se trouvent dans le répertoire `architecture/diagrams/`.
+- **Diagramme de Contexte (Niveau 1)**: `architecture/diagrams/context.puml`
+- **Diagramme de Conteneur (Niveau 2)**: `architecture/diagrams/container.puml`
+- **Diagramme de Composant (Niveau 3)**: `architecture/diagrams/component.puml`

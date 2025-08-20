@@ -1,0 +1,26 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+title Diagramme de Composant pour l'Application Web (SPA)
+
+Container(spa, "Application Web", "JavaScript, React", "Fournit l'interface utilisateur et gère les interactions avec l'API OpenAI.")
+
+System_Boundary(c2, "Application Web (SPA)") {
+    Component(ui, "Interface Utilisateur", "React Components", "Gère l'affichage des éléments de l'interface.")
+    Component(api_request_handler, "Gestionnaire de Requêtes API", "JavaScript Module", "Envoie les requêtes à l'API OpenAI et gère les réponses.")
+    Component(state_manager, "Gestionnaire d'État", "Redux/Context API", "Gère l'état global de l'application (messages, historique, etc.).")
+    Component(message_display, "Afficheur de Messages", "React Component", "Affiche les messages de l'utilisateur et les réponses de l'IA.")
+    Component(input_field, "Champ de Saisie", "React Component", "Permet à l'utilisateur de saisir des requêtes.")
+}
+
+System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+
+Rel(ui, input_field, "Contient")
+Rel(ui, message_display, "Contient")
+Rel(input_field, state_manager, "Met à jour l'état avec les requêtes")
+Rel(state_manager, api_request_handler, "Déclenche l'envoi de requêtes")
+Rel(api_request_handler, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+Rel(api_request_handler, state_manager, "Met à jour l'état avec les réponses")
+Rel(state_manager, message_display, "Fournit les messages à afficher")
+
+@enduml

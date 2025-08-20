@@ -1,0 +1,19 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+title Diagramme de Conteneur pour l'Application Frontend OpenAI
+
+Person(user, "Utilisateur", "Utilisateur de l'application")
+
+System_Boundary(c1, "Application Frontend OpenAI") {
+    Container(spa, "Application Web", "JavaScript, React", "Fournit l'interface utilisateur et gère les interactions avec l'API OpenAI.")
+    Container(web_browser, "Navigateur Web", "Chrome, Firefox, Edge, etc.", "Exécute l'application web monopage.")
+}
+
+System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+
+Rel(user, web_browser, "Utilise")
+Rel(web_browser, spa, "Héberge")
+Rel(spa, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+
+@enduml

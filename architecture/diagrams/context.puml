@@ -1,0 +1,16 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+
+title Diagramme de Contexte pour l'Application Frontend OpenAI
+
+System_Boundary(c0, "Application Frontend OpenAI") {
+    Person(user, "Utilisateur", "Utilisateur de l'application")
+    System(frontend_app, "Application Frontend OpenAI", "Application web monopage (SPA) pour interagir avec l'API OpenAI")
+}
+
+System_Ext(openai_api, "API OpenAI", "Service d'intelligence artificielle")
+
+Rel(user, frontend_app, "Utilise")
+Rel(frontend_app, openai_api, "Envoie des requêtes à", "HTTPS/JSON")
+
+@enduml
